@@ -3,8 +3,8 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%
 }
-/*全站变灰*/
-html {     filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);     -webkit-filter: grayscale(100%); }
+/*全站变灰
+html {     filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);     -webkit-filter: grayscale(100%); }*/
 body {
   margin: 0
 }
