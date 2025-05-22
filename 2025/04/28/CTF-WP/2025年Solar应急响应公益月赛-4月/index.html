@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2025年Solar应急响应公益月赛-4月 Writeup | Beiko's Blog</title><meta name="author" content="Beiko"><meta name="copyright" content="Beiko"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2025年Solar应急响应公益月赛-4月 Writeup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025年Solar应急响应公益月赛-4月 Writeup">
+<meta property="og:url" content="https://www.xieweiling.top/blog/2025/04/28/CTF-WP/2025%E5%B9%B4Solar%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%AC%E7%9B%8A%E6%9C%88%E8%B5%9B-4%E6%9C%88/index.html">
+<meta property="og:site_name" content="Beiko&#39;s Blog">
+<meta property="og:description" content="2025年Solar应急响应公益月赛-4月 Writeup">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.xieweiling.top/?imgtype=pc&tags=唯美&?10&type=yktk">
+<meta property="article:published_time" content="2025-04-28T04:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-27T16:00:00.000Z">
+<meta property="article:author" content="Beiko">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="WP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.xieweiling.top/?imgtype=pc&tags=唯美&?10&type=yktk"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2025年Solar应急响应公益月赛-4月 Writeup",
+  "url": "https://www.xieweiling.top/blog/2025/04/28/CTF-WP/2025%E5%B9%B4Solar%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%AC%E7%9B%8A%E6%9C%88%E8%B5%9B-4%E6%9C%88/",
+  "image": "https://api.xieweiling.top/?imgtype=pc&tags=唯美&?10&type=yktk",
+  "datePublished": "2025-04-28T04:00:00.000Z",
+  "dateModified": "2025-04-27T16:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Beiko",
+      "url": "https://www.xieweiling.top/blog/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://api.xieweiling.top/favicon.ico"><link rel="canonical" href="https://www.xieweiling.top/blog/2025/04/28/CTF-WP/2025%E5%B9%B4Solar%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%AC%E7%9B%8A%E6%9C%88%E8%B5%9B-4%E6%9C%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2025年Solar应急响应公益月赛-4月 Writeup',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 5.4.2"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/favicon.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.beiko.top"><i class="fa-fw fas fa-image"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://xieweiling.top/API"><i class="fa-fw fas fa-chain"></i><span> 本站API接口</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?10&amp;type=yktk);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/blog/"><span class="site-name">Beiko's Blog</span></a><a class="nav-page-title" href="/blog/"><span class="site-name">2025年Solar应急响应公益月赛-4月 Writeup</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.beiko.top"><i class="fa-fw fas fa-image"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://xieweiling.top/API"><i class="fa-fw fas fa-chain"></i><span> 本站API接口</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">2025年Solar应急响应公益月赛-4月 Writeup</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon fas fa-history"></i><span class="post-meta-label">更新于</span><time datetime="2025-04-27T16:00:00.000Z" title="更新于 2025-04-28 00:00:00">2025-04-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="应急行动-1"><a href="#应急行动-1" class="headerlink" title="应急行动-1"></a>应急行动-1</h2><p>利用取证大师分析VM虚拟机镜像</p>
+<p>分析Apache日志，发现多次访问了<code>&lt;font style=&quot;color:rgb(0, 0, 0);&quot;&gt;AgentBoard.XGI&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">这个路径</font></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-0.png"></p>
+<p>搜了一下，发现是<code>瑞友天翼应用虚拟化系统RCE漏洞</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-1.png"></p>
+<p>继续分析所有访问这个路径的IP</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-2.png"></p>
+<p>在第312行日志中发现写了一个一句话木马</p>
+<p>所以flag为<code>flag&#123;192.168.56.128 21/04/2025&#125;</code></p>
+<h2 id="应急行动-2（复现）"><a href="#应急行动-2（复现）" class="headerlink" title="应急行动-2（复现）"></a>应急行动-2（复现）</h2><p>从取证大师中可以看到，攻击者下载了Edge浏览器，在下载历史可以看到下载了<code>rclone</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-3.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-4.png"></p>
+<p>rclone可以挂载网盘，结合题目说的流量异常，很大可能为攻击者用来窃取数据用的（我居然没有留意该软件是干嘛的）</p>
+<p>所以在<code>rclone.conf</code>的配置文件中找到flag</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-5.png"></p>
+<p><code>flag&#123;oisienfpqwlmdouydrsbhuisjAUGEDW&#125;</code></p>
+<h2 id="应急行动-3"><a href="#应急行动-3" class="headerlink" title="应急行动-3"></a>应急行动-3</h2><p>在取证大师中查看该文件的朔源</p>
+<p><code>C:\Program Files (x86)\RealFriend\Rap Server\WebRoot\casweb\Home\View\Index\index.html</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-6.png"></p>
+<p>在<code>2025-04-21 23:39:28</code>发现变更</p>
+<p>所以flag为<code>flag&#123;2025-04-21 23:39:28&#125;</code></p>
+<h2 id="应急行动-4"><a href="#应急行动-4" class="headerlink" title="应急行动-4"></a>应急行动-4</h2><p>flag1{zheshi}</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-7.png"></p>
+<p>flag2{yige}</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-8.png"></p>
+<p>flag{ni}</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-9.png"></p>
+<p>flag4{xiangbudaodeflag}</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-10.png"></p>
+<p>最终flag为<code>flag&#123;zheshiyigenixiangbudaodeflag&#125;</code></p>
+<h2 id="应急行动-5（复现）"><a href="#应急行动-5（复现）" class="headerlink" title="应急行动-5（复现）"></a>应急行动-5（复现）</h2><p>通过题目提示知道要找的是加密程序，在真实的应急响应中，寻找加密器主要通过加密文件的修改时间、加密器常见路径(启动项，music，temp，users等目录下)、常见的加密器名称等线索排查加密器，在这里我们可以上传一个everything方便查找，可以看到一个名为Encryptor123的程序，很明显这就是我们要找的目标。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-11.png"></p>
+<p><code>flag&#123;Encryptor123.exe&#125;</code></p>
+<h2 id="可疑文件"><a href="#可疑文件" class="headerlink" title="可疑文件"></a>可疑文件</h2><p>直接把dll扔进IDA</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-12.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-13.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-14.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-15.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-16.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall sub_18007ABE0(__int64 a1, __int64 a2)</span><br><span class="line">&#123;</span><br><span class="line">  char *v2; // rdi</span><br><span class="line">  __int64 i; // rcx</span><br><span class="line">  _BYTE v5[32]; // [rsp+0h] [rbp-20h] BYREF</span><br><span class="line">  char v6; // [rsp+20h] [rbp+0h] BYREF</span><br><span class="line">  int v7; // [rsp+30h] [rbp+10h] BYREF</span><br><span class="line">  _BYTE v8[4]; // [rsp+34h] [rbp+14h] BYREF</span><br><span class="line">  _BYTE v9[4]; // [rsp+38h] [rbp+18h] BYREF</span><br><span class="line">  _BYTE v10[4]; // [rsp+3Ch] [rbp+1Ch] BYREF</span><br><span class="line">  _BYTE v11[4]; // [rsp+40h] [rbp+20h] BYREF</span><br><span class="line">  _BYTE v12[4]; // [rsp+44h] [rbp+24h] BYREF</span><br><span class="line">  _BYTE v13[4]; // [rsp+48h] [rbp+28h] BYREF</span><br><span class="line">  _BYTE v14[4]; // [rsp+4Ch] [rbp+2Ch] BYREF</span><br><span class="line">  _BYTE v15[4]; // [rsp+50h] [rbp+30h] BYREF</span><br><span class="line">  _BYTE v16[4]; // [rsp+54h] [rbp+34h] BYREF</span><br><span class="line">  _BYTE v17[4]; // [rsp+58h] [rbp+38h] BYREF</span><br><span class="line">  _BYTE v18[4]; // [rsp+5Ch] [rbp+3Ch] BYREF</span><br><span class="line">  _BYTE v19[4]; // [rsp+60h] [rbp+40h] BYREF</span><br><span class="line">  _BYTE v20[4]; // [rsp+64h] [rbp+44h] BYREF</span><br><span class="line">  _BYTE v21[4]; // [rsp+68h] [rbp+48h] BYREF</span><br><span class="line">  _BYTE v22[24]; // [rsp+6Ch] [rbp+4Ch] BYREF</span><br><span class="line">  int j; // [rsp+84h] [rbp+64h]</span><br><span class="line">  int k; // [rsp+A4h] [rbp+84h]</span><br><span class="line">  int m; // [rsp+C4h] [rbp+A4h]</span><br><span class="line">  int *v26; // [rsp+198h] [rbp+178h]</span><br><span class="line"></span><br><span class="line">  v2 = &amp;v6;</span><br><span class="line">  for ( i = 50LL; i; --i )</span><br><span class="line">  &#123;</span><br><span class="line">    *(_DWORD *)v2 = -858993460;</span><br><span class="line">    v2 += 4;</span><br><span class="line">  &#125;</span><br><span class="line">  sub_1800770F7((__int64)&amp;unk_1801AD0A3);</span><br><span class="line">  sub_1800757E3((__int64)&amp;v7, a1, 64LL);</span><br><span class="line">  for ( j = 0; j &lt; 20; j += 2 )</span><br><span class="line">  &#123;</span><br><span class="line">    v26 = &amp;v7;</span><br><span class="line">    sub_18007B4B0(&amp;v7, v11, v15, v19);</span><br><span class="line">    v26 = (int *)v8;</span><br><span class="line">    sub_18007B4B0(v8, v12, v16, v20);</span><br><span class="line">    v26 = (int *)v9;</span><br><span class="line">    sub_18007B4B0(v9, v13, v17, v21);</span><br><span class="line">    v26 = (int *)v10;</span><br><span class="line">    sub_18007B4B0(v10, v14, v18, v22);</span><br><span class="line">    v26 = &amp;v7;</span><br><span class="line">    sub_18007B4B0(&amp;v7, v12, v17, v22);</span><br><span class="line">    v26 = (int *)v8;</span><br><span class="line">    sub_18007B4B0(v8, v13, v18, v19);</span><br><span class="line">    v26 = (int *)v9;</span><br><span class="line">    sub_18007B4B0(v9, v14, v15, v20);</span><br><span class="line">    v26 = (int *)v10;</span><br><span class="line">    sub_18007B4B0(v10, v11, v16, v21);</span><br><span class="line">  &#125;</span><br><span class="line">  for ( k = 0; k &lt; 16; ++k )</span><br><span class="line">    *(_DWORD *)&amp;v8[4 * k - 4] += *(_DWORD *)(a1 + 4LL * k);</span><br><span class="line">  for ( m = 0; m &lt; 16; ++m )</span><br><span class="line">  &#123;</span><br><span class="line">    *(_BYTE *)(a2 + 4 * m) = v8[4 * m - 4];</span><br><span class="line">    *(_BYTE *)(a2 + 4 * m + 1) = BYTE1(*(_DWORD *)&amp;v8[4 * m - 4]);</span><br><span class="line">    *(_BYTE *)(a2 + 4 * m + 2) = BYTE2(*(unsigned int *)&amp;v8[4 * m - 4]);</span><br><span class="line">    *(_BYTE *)(a2 + 4 * m + 3) = HIBYTE(*(unsigned int *)&amp;v8[4 * m - 4]);</span><br><span class="line">  &#125;</span><br><span class="line">  ++*(_DWORD *)(a1 + 48);</span><br><span class="line">  return sub_180076850((__int64)v5, (__int64)&amp;unk_180167C40);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-17.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-18.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.beiko.top/blog/2025/4/28/image-19.png"></p>
+<p>最终逆向脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">chacha20_quarter_round</span>(<span class="params">a, b, c, d</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;ChaCha20四分之一轮实现&quot;&quot;&quot;</span></span><br><span class="line">    a = (a + b) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    d ^= a</span><br><span class="line">    d = ((d &lt;&lt; <span class="number">16</span>) | (d &gt;&gt; <span class="number">16</span>)) &amp; <span class="number">0xFFFFFFFF</span>  <span class="comment"># ROL16</span></span><br><span class="line">    c = (c + d) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    b ^= c</span><br><span class="line">    b = ((b &lt;&lt; <span class="number">12</span>) | (b &gt;&gt; <span class="number">20</span>)) &amp; <span class="number">0xFFFFFFFF</span>  <span class="comment"># ROL12</span></span><br><span class="line">    a = (a + b) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    d ^= a</span><br><span class="line">    d = ((d &lt;&lt; <span class="number">8</span>) | (d &gt;&gt; <span class="number">24</span>)) &amp; <span class="number">0xFFFFFFFF</span>   <span class="comment"># ROL8</span></span><br><span class="line">    c = (c + d) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">    b ^= c</span><br><span class="line">    b = ((b &lt;&lt; <span class="number">7</span>) | (b &gt;&gt; <span class="number">25</span>)) &amp; <span class="number">0xFFFFFFFF</span>   <span class="comment"># ROL7</span></span><br><span class="line">    <span class="keyword">return</span> a, b, c, d</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">chacha20_block</span>(<span class="params">key, counter, nonce</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;生成64字节密钥流（修正状态矩阵）&quot;&quot;&quot;</span></span><br><span class="line">    constants = [<span class="number">0x61707865</span>, <span class="number">0x3320646e</span>, <span class="number">0x79622d32</span>, <span class="number">0x6b206574</span>]</span><br><span class="line">    key_words = <span class="built_in">list</span>(struct.unpack(<span class="string">&#x27;&lt;8I&#x27;</span>, key))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 确保状态矩阵有16个元素</span></span><br><span class="line">    state = [</span><br><span class="line">        constants[<span class="number">0</span>], constants[<span class="number">1</span>], constants[<span class="number">2</span>], constants[<span class="number">3</span>],</span><br><span class="line">        *key_words[:<span class="number">4</span>],          <span class="comment"># 密钥前4字</span></span><br><span class="line">        *key_words[<span class="number">4</span>:<span class="number">8</span>],         <span class="comment"># 密钥后4字</span></span><br><span class="line">        counter,                 <span class="comment"># 块计数器（32位）</span></span><br><span class="line">        nonce[<span class="number">0</span>], nonce[<span class="number">1</span>], nonce[<span class="number">2</span>]  <span class="comment"># Nonce为3个32位字</span></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    initial_state = state.copy()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 20轮混淆处理</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        <span class="comment"># 列处理</span></span><br><span class="line">        state[<span class="number">0</span>], state[<span class="number">4</span>], state[<span class="number">8</span>], state[<span class="number">12</span>] = chacha20_quarter_round(state[<span class="number">0</span>], state[<span class="number">4</span>], state[<span class="number">8</span>], state[<span class="number">12</span>])</span><br><span class="line">        state[<span class="number">1</span>], state[<span class="number">5</span>], state[<span class="number">9</span>], state[<span class="number">13</span>] = chacha20_quarter_round(state[<span class="number">1</span>], state[<span class="number">5</span>], state[<span class="number">9</span>], state[<span class="number">13</span>])</span><br><span class="line">        state[<span class="number">2</span>], state[<span class="number">6</span>], state[<span class="number">10</span>], state[<span class="number">14</span>] = chacha20_quarter_round(state[<span class="number">2</span>], state[<span class="number">6</span>], state[<span class="number">10</span>], state[<span class="number">14</span>])</span><br><span class="line">        state[<span class="number">3</span>], state[<span class="number">7</span>], state[<span class="number">11</span>], state[<span class="number">15</span>] = chacha20_quarter_round(state[<span class="number">3</span>], state[<span class="number">7</span>], state[<span class="number">11</span>], state[<span class="number">15</span>])</span><br><span class="line">        <span class="comment"># 行处理</span></span><br><span class="line">        state[<span class="number">0</span>], state[<span class="number">5</span>], state[<span class="number">10</span>], state[<span class="number">15</span>] = chacha20_quarter_round(state[<span class="number">0</span>], state[<span class="number">5</span>], state[<span class="number">10</span>], state[<span class="number">15</span>])</span><br><span class="line">        state[<span class="number">1</span>], state[<span class="number">6</span>], state[<span class="number">11</span>], state[<span class="number">12</span>] = chacha20_quarter_round(state[<span class="number">1</span>], state[<span class="number">6</span>], state[<span class="number">11</span>], state[<span class="number">12</span>])</span><br><span class="line">        state[<span class="number">2</span>], state[<span class="number">7</span>], state[<span class="number">8</span>], state[<span class="number">13</span>] = chacha20_quarter_round(state[<span class="number">2</span>], state[<span class="number">7</span>], state[<span class="number">8</span>], state[<span class="number">13</span>])</span><br><span class="line">        state[<span class="number">3</span>], state[<span class="number">4</span>], state[<span class="number">9</span>], state[<span class="number">14</span>] = chacha20_quarter_round(state[<span class="number">3</span>], state[<span class="number">4</span>], state[<span class="number">9</span>], state[<span class="number">14</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 叠加初始状态并序列化</span></span><br><span class="line">    block = [(state[i] + initial_state[i]) &amp; <span class="number">0xFFFFFFFF</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>)]</span><br><span class="line">    <span class="keyword">return</span> struct.pack(<span class="string">&#x27;&lt;16I&#x27;</span>, *block)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decrypt_file</span>(<span class="params">enc_path, password</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;解密主函数（修正Nonce）&quot;&quot;&quot;</span></span><br><span class="line">    key = password.encode().ljust(<span class="number">32</span>, <span class="string">b&#x27;\x00&#x27;</span>)[:<span class="number">32</span>]</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    nonce = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)  <span class="comment"># Nonce扩展为3个32位字</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(enc_path, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> fin:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            key_stream = chacha20_block(key, counter, nonce)</span><br><span class="line">            counter += <span class="number">1</span></span><br><span class="line">            chunk = fin.read(<span class="number">64</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> chunk:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            decrypted = <span class="built_in">bytes</span>( ((c - <span class="number">1</span>) % <span class="number">0x100</span>) ^ key_stream[i] <span class="keyword">for</span> i, c <span class="keyword">in</span> <span class="built_in">enumerate</span>(chunk) )</span><br><span class="line">            <span class="built_in">print</span>(decrypted)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    decrypt_file(<span class="string">&#x27;flag.enc&#x27;</span>, <span class="string">&#x27;qewuri&#x27;</span>)</span><br><span class="line">    <span class="comment"># flag&#123;sierting_666_fpdsajf[psdfljnwqrlqwhperhqwoeiurhqweourhp&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.xieweiling.top/blog">Beiko</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.xieweiling.top/blog/2025/04/28/CTF-WP/2025%E5%B9%B4Solar%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%AC%E7%9B%8A%E6%9C%88%E8%B5%9B-4%E6%9C%88/">https://www.xieweiling.top/blog/2025/04/28/CTF-WP/2025%E5%B9%B4Solar%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%AC%E7%9B%8A%E6%9C%88%E8%B5%9B-4%E6%9C%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.xieweiling.top/blog" target="_blank">Beiko's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/CTF/">CTF</a><a class="post-meta__tags" href="/blog/tags/WP/">WP</a></div><div class="post-share"><div class="social-share" data-image="https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?10&amp;type=yktk" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/blog/2025/04/13/CTF-WP/SQCTF%202025/" title="SQCTF 2025 Writeup"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?11&amp;type=yktk" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">SQCTF 2025 Writeup</div></div><div class="info-2"><div class="info-item-1">SQCTF 2025 Writeup</div></div></div></a><a class="pagination-related" href="/blog/2025/05/21/CTF-WP/PaluCTF%202025/" title="PaluCTF 2025 应急响应 Writeup"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?9&amp;type=yktk" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">PaluCTF 2025 应急响应 Writeup</div></div><div class="info-2"><div class="info-item-1">记录一下PaluCTF 2025 应急响应</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/blog/2025/05/21/CTF-WP/PaluCTF%202025/" title="PaluCTF 2025 应急响应 Writeup"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&tags=唯美&?9&type=yktk" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-21</div><div class="info-item-2">PaluCTF 2025 应急响应 Writeup</div></div><div class="info-2"><div class="info-item-1">记录一下PaluCTF 2025 应急响应</div></div></div></a><a class="pagination-related" href="/blog/2025/04/13/CTF-WP/SQCTF%202025/" title="SQCTF 2025 Writeup"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&tags=唯美&?11&type=yktk" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-13</div><div class="info-item-2">SQCTF 2025 Writeup</div></div><div class="info-2"><div class="info-item-1">SQCTF 2025 Writeup</div></div></div></a><a class="pagination-related" href="/blog/2024/09/25/GZCTF/" title="GZCTF 开源平台部署"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&tags=唯美&?6&type=yktk" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-25</div><div class="info-item-2">GZCTF 开源平台部署</div></div><div class="info-2"><div class="info-item-1">记一次CTF平台的搭建过程（Docker + K3s 分离部署）</div></div></div></a><a class="pagination-related" href="/blog/2024/09/26/03/" title="CTF动态题目构建"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&tags=唯美&?7&type=yktk" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-26</div><div class="info-item-2">CTF动态题目构建</div></div><div class="info-2"><div class="info-item-1">记一次CTF动态题目构建的搭建过程</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E6%80%A5%E8%A1%8C%E5%8A%A8-1"><span class="toc-number">1.</span> <span class="toc-text">应急行动-1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E6%80%A5%E8%A1%8C%E5%8A%A8-2%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">应急行动-2（复现）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E6%80%A5%E8%A1%8C%E5%8A%A8-3"><span class="toc-number">3.</span> <span class="toc-text">应急行动-3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E6%80%A5%E8%A1%8C%E5%8A%A8-4"><span class="toc-number">4.</span> <span class="toc-text">应急行动-4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E6%80%A5%E8%A1%8C%E5%8A%A8-5%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">应急行动-5（复现）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E7%96%91%E6%96%87%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">可疑文件</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/2025/05/21/CTF-WP/PaluCTF%202025/" title="PaluCTF 2025 应急响应 Writeup"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?9&amp;type=yktk" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="PaluCTF 2025 应急响应 Writeup"/></a><div class="content"><a class="title" href="/blog/2025/05/21/CTF-WP/PaluCTF%202025/" title="PaluCTF 2025 应急响应 Writeup">PaluCTF 2025 应急响应 Writeup</a><time datetime="2025-05-21T11:00:00.000Z" title="发表于 2025-05-21 19:00:00">2025-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2025/04/28/CTF-WP/2025%E5%B9%B4Solar%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%AC%E7%9B%8A%E6%9C%88%E8%B5%9B-4%E6%9C%88/" title="2025年Solar应急响应公益月赛-4月 Writeup"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?10&amp;type=yktk" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="2025年Solar应急响应公益月赛-4月 Writeup"/></a><div class="content"><a class="title" href="/blog/2025/04/28/CTF-WP/2025%E5%B9%B4Solar%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%85%AC%E7%9B%8A%E6%9C%88%E8%B5%9B-4%E6%9C%88/" title="2025年Solar应急响应公益月赛-4月 Writeup">2025年Solar应急响应公益月赛-4月 Writeup</a><time datetime="2025-04-28T04:00:00.000Z" title="发表于 2025-04-28 12:00:00">2025-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2025/04/13/CTF-WP/SQCTF%202025/" title="SQCTF 2025 Writeup"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?11&amp;type=yktk" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="SQCTF 2025 Writeup"/></a><div class="content"><a class="title" href="/blog/2025/04/13/CTF-WP/SQCTF%202025/" title="SQCTF 2025 Writeup">SQCTF 2025 Writeup</a><time datetime="2025-04-13T10:00:00.000Z" title="发表于 2025-04-13 18:00:00">2025-04-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2024/09/27/04/" title="本地AI大模型部署"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?8&amp;type=yktk" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="本地AI大模型部署"/></a><div class="content"><a class="title" href="/blog/2024/09/27/04/" title="本地AI大模型部署">本地AI大模型部署</a><time datetime="2024-09-27T06:29:00.000Z" title="发表于 2024-09-27 14:29:00">2024-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2024/09/26/03/" title="CTF动态题目构建"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.xieweiling.top/?imgtype=pc&amp;tags=唯美&amp;?7&amp;type=yktk" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="CTF动态题目构建"/></a><div class="content"><a class="title" href="/blog/2024/09/26/03/" title="CTF动态题目构建">CTF动态题目构建</a><time datetime="2024-09-26T10:29:00.000Z" title="发表于 2024-09-26 18:29:00">2024-09-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Beiko</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 5.4.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'r0zaRNVTg4O1z7w5iaCB0I0M-gzGzoHsz',
+      appKey: 'GrsHd5ymCsIENl0K9Oac5PJr',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
